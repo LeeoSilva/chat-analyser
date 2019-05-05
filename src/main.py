@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-import sys, os 
-import matplotlib.pyplot as plt
-from dataHandler import *
+import sys chat.getHour()
+from dataHandler import * # Imported file
 
 def printUsage():
     print("Usage: chat-analyser <chat-file>")
@@ -16,5 +15,9 @@ def getArgFile():
 if __name__ == "__main__":
     chat = data(getArgFile())
     chat.getDate()
-    chat.getMessagePerDay()
+    messagePerDay = chat.getMessagePerDay()
     chat.getHour()
+    
+
+
+    print("Average of messages send per day by both users: {:.2f}".format(messagePerDay))
