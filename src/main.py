@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-import sys chat.getHour()
+import sys
 from dataHandler import * # Imported file
+import vectorMath 
+import statistic # imported file 
 
 def printUsage():
     print("Usage: chat-analyser <chat-file>")
@@ -14,10 +16,14 @@ def getArgFile():
 
 if __name__ == "__main__":
     chat = data(getArgFile())
-    chat.getDate()
-    messagePerDay = chat.getMessagePerDay()
-    chat.getHour()
-    
-
-
+    date = chat.getDate()
+    hours = chat.getHour()
+    messagePerDay  = statistic.getMessagePerDay(date)
+    messagePerHour = statistic.getMessagePerHour(hours)
+    names = chat.getNames()
+    content = chat.getMessageContent()
+    #vectorMath.getRepeatedElements()
+    chat.getWords()
+    print("Most occured sender: {}".format(statistic.getMostSended(names)))
     print("Average of messages send per day by both users: {:.2f}".format(messagePerDay))
+    print("Average of messages send per hour by both users: {:.2f}".format(messagePerHour))
