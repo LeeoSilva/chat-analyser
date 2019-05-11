@@ -7,5 +7,5 @@ A tentative to data mine and analyze chats, getting info like: who's talking mor
 - [ ] Number of emojis
 - [ ] Length of the text
 - [ ] Average of number of words per sentence
-- [ ] Average words lenght
+- [x] Average words lenght
 - [ ] Create neural network for humor detection 

@@ -38,3 +38,13 @@ def getMostSended(names):
     # Obs: Used to get the statistic of the user who most
     # sended messages of the conversaion (The guy who flood everything)
     return max(names,key=names.count)
+
+def getAverageWordLength(words):
+    # Returns the average of word lenght of
+    # a word vector
+
+    wordLenght = int(0)
+    sum = int(0)
+
+    for i in range(len(words)): sum += len(words[i]) # Get the sum of all the characters in the vector
+    return sum / len(words)

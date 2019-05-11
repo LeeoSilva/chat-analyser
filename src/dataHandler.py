@@ -26,7 +26,6 @@ class data:
         regexp = ':\s(\w+.*)$' 
         for lines in self.chat:
             lineWords = re.findall(regexp, lines.rstrip())
-            print(lineWords)
             words.append(lineWords)
         return words
 
