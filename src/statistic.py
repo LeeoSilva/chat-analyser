@@ -48,3 +48,10 @@ def getAverageWordLength(words):
 
     for i in range(len(words)): sum += len(words[i]) # Get the sum of all the characters in the vector
     return sum / len(words)
+
+def getAverageReadTime(words, average=200):
+    # The average human reads roughly 200-250 words per/minute 
+    # Now considering the wost average (that being 200wpm)
+    # This function just returns the average time
+    # of the hole file
+    return len(words) / average # Obviously the time is in minutes 
