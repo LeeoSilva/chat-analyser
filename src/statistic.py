@@ -33,6 +33,11 @@ def getMessagePerDay(dates):
         for i in range(len(occurances)): sum += occurances[i] # Summation of the entire vector                           
     finally: return (sum / len(occurances)) # Average of messages per day
 
+def getMessagesPerUser(names):
+    # Returns the number of times each element in the array appears
+    # Obs: Used to get the number of messages each user sended
+    print([[x, names.count(x)] for x in set(names)]) 
+
 def getMostSended(names): 
     # Returns the most occured name in a list
     # Obs: Used to get the statistic of the user who most

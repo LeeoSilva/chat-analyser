@@ -26,6 +26,7 @@ if __name__ == "__main__":
     words = chat.getWords()
     averageWordLength =  statistic.getAverageWordLength(words)
     averageReadTime = statistic.getAverageReadTime(words)
+    messagesPerUser = statistic.getMessagesPerUser(names) 
     print("Most occured sender: {}".format(statistic.getMostSended(names)))
     print("Average of messages send per day by both users: {:.2f}".format(messagePerDay))
     print("Average of messages send per hour by both users: {:.2f}".format(messagePerHour))

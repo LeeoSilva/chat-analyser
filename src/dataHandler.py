@@ -10,6 +10,7 @@
 # 4/6/18, 11:13 AM - Leonardo: tudo, e vc? 
 
 import re # Regular expression library
+from collections import Counter
 
 class data:
     chat = None 
