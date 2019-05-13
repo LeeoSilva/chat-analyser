@@ -21,19 +21,21 @@ class data:
 
     def getWords(self):
         # Appends all the words in a array
-        lineWords = [] 
         words = []
-        regexp = ':\s(\w+.*)$' 
+        regexp = r':\s(.*)|(^\D+)'
+
         for lines in self.chat:
-            lineWords = re.findall(regexp, lines.rstrip())
-            words.append(lineWords)
+            try:
+                lineWords = re.search(regexp, lines.rstrip()).group(1)
+                words += lineWords.split(" ", len(lineWords))
+            except: pass
         return words
 
     def getDate(self):
         # Mines the data searching for dates about the received messages
         actualTime = ""
         date = []
-        regexp = '^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{2,4}\,\s'
+        regexp = r'^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{2,4}\,\s'
         for lines in self.chat:
             actualTime = re.findall(regexp, lines.rstrip())
             date.append(actualTime) 
@@ -43,7 +45,7 @@ class data:
         # Returns an array of times
         streak = int(0)
         hours = []
-        regexp = '([0-9]{1,2})\:([0-9]{1,2})\s(AM|PM)' 
+        regexp = r'([0-9]{1,2})\:([0-9]{1,2})\s(AM|PM)' 
         for lines in self.chat:
             time = re.findall(regexp, lines.rstrip())
             hours.append(time)
@@ -51,7 +53,7 @@ class data:
     
     def getMessageContent(self):
         # Retturns the content of the message
-        regexp = '\:\s(.*?)(?=\s*\d{2}\/|$)'
+        regexp = r'\:\s(.*?)(?=\s*\d{2}\/|$)'
         content = []
         try:
             for lines in self.chat:
@@ -62,7 +64,7 @@ class data:
 
     def getNames(self):
         # Extracts the last name of the person who sent the message
-        regexp = '\-\s([^:]*):\s'
+        regexp = r'\-\s([^:]*):\s'
         names = []
         try: 
             for line in self.chat:

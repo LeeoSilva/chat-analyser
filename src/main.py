@@ -30,4 +30,4 @@ if __name__ == "__main__":
     print("Average of messages send per day by both users: {:.2f}".format(messagePerDay))
     print("Average of messages send per hour by both users: {:.2f}".format(messagePerHour))
     print("Average word length: {:.2f}".format(averageWordLength))
-    print("Average read time of the conversation: {} minutes".format(int(averageReadTime)))
+    print("Average read time of the conversation: {:.2f} minutes".format(averageReadTime))
