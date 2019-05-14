@@ -10,10 +10,15 @@
 # 4/6/18, 11:13 AM - Leonardo: tudo, e vc? 
 
 import re # Regular expression library
-from collections import Counter
 
 class data:
     chat = None 
+    words = []
+    dates = []
+    hours = []
+    names = []
+    content = []
+
 
     def __init__(self, textfile):
         # Receives a .txt file as a input 
@@ -22,56 +27,53 @@ class data:
 
     def getWords(self):
         # Appends all the words in a array
-        words = []
+        if len(self.words) != 0: return self.words 
         regexp = r':\s(.*)|(^\D+)'
 
         for lines in self.chat:
             try:
                 lineWords = re.search(regexp, lines.rstrip()).group(1)
-                words += lineWords.split(" ", len(lineWords))
+                self.words += lineWords.split(" ", len(lineWords))
             except: pass
-        return words
+        return self.words
 
     def getDate(self):
         # Mines the data searching for dates about the received messages
-        actualTime = ""
-        date = []
+        if len(self.dates) != 0 : return self.dates
         regexp = r'^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{2,4}\,\s'
         for lines in self.chat:
             actualTime = re.findall(regexp, lines.rstrip())
-            date.append(actualTime) 
-        return date
+            self.dates.append(actualTime) 
+        return self.dates
   
     def getHour(self):
         # Returns an array of times
-        streak = int(0)
-        hours = []
+        if len(self.hours) != 0: return self.hours
         regexp = r'([0-9]{1,2})\:([0-9]{1,2})\s(AM|PM)' 
         for lines in self.chat:
             time = re.findall(regexp, lines.rstrip())
-            hours.append(time)
-        return hours
+            self.hours.append(time)
+        return self.hours
     
     def getMessageContent(self):
-        # Retturns the content of the message
+        # Returns the content of the message
+        if len(self.content) != 0: return self.content
         regexp = r'\:\s(.*?)(?=\s*\d{2}\/|$)'
-        content = []
         try:
             for lines in self.chat:
-                content = re.findall(regexp, lines.rstrip())
-                print(content.group(1))
-                content.append(content.group(1))
-        finally: return content
+                content = re.findall(regexp, lines.rstrip()).group(1)
+                self.content.append(content)
+        finally: return self.content
 
     def getNames(self):
         # Extracts the last name of the person who sent the message
+        if len(self.names) != 0: return self.names
         regexp = r'\-\s([^:]*):\s'
-        names = []
         try: 
             for line in self.chat:
-                name = re.search(regexp, line.rstrip())
-                names.append(name.group(1))
-        finally: return names
+                name = re.search(regexp, line.rstrip()).group(1)
+                self.names.append(name)
+        finally: return self.names
 
 
     def runRegex(self, regexp):

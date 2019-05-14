@@ -6,11 +6,10 @@ def getMostSaidWords(words):
 
 def getMessagePerHour(hour):
     # Returns an value of messages per hour 
+    if len(hour) == 0: print("[ERROR] Information 'hour' missing"); return  
     occurances = []
     sum = int(0)
     streak = int(0)
-
-    if hour == None: print("[ERROR] Information missing"); exit() 
    
     for i in range(len(hour)):
         if hour[i] == hour[i-1]: streak+=1
@@ -22,10 +21,10 @@ def getMessagePerHour(hour):
     
 def getMessagePerDay(dates):
     # returns an value of messages per day
+    if len(dates) == 0: print("[ERROR] Information 'dates' missing "); return
     occurances = []
     sum = 0 # Used in the summation of the entire vector  
     streak = int(0)
-    if dates is None: print("[ERROR] Information missing"); exit()
     try:
         for i in range(len(dates)):
             if dates[i] == dates[i-1]: streak+=1 
@@ -36,17 +35,20 @@ def getMessagePerDay(dates):
 def getMessagesPerUser(names):
     # Returns the number of times each element in the array appears
     # Obs: Used to get the number of messages each user sended
+    if len(names) == 0: print("[ERROR] Information 'names' missing"); return 
     print([[x, names.count(x)] for x in set(names)]) 
 
 def getMostSended(names): 
     # Returns the most occured name in a list
     # Obs: Used to get the statistic of the user who most
     # sended messages of the conversaion (The guy who flood everything)
+    if len(names) == 0: print("[ERROR] Information 'names' missing"); return
     return max(names,key=names.count)
 
 def getAverageWordLength(words):
     # Returns the average of word lenght of
     # a word vector
+    if len(words) == 0: print("[ERROR] Information 'words' missing"); return
 
     wordLenght = int(0)
     sum = int(0)
