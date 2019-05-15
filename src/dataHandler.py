@@ -49,28 +49,30 @@ class data:
         # Returns an array of times
         if len(self.hours) != 0: return self.hours
         regexp = r'([0-9]{1,2})\:([0-9]{1,2})\s(AM|PM)' 
-        try:
-            for lines in self.chat:
+        for lines in self.chat:
+            try:
                 time = re.findall(regexp, lines.rstrip())
                 self.hours.append(time)
-        finally: return self.hours
+            except: pass
+        return self.hours
     
     def getMessageContent(self):
         # Returns the content of the message
         if len(self.content) != 0: return self.content
         regexp = r'\:\s(.*?)(?=\s*\d{2}\/|$)'
-        try:
-            for lines in self.chat:
+        for lines in self.chat:
+            try:
                 content = re.findall(regexp, lines.rstrip()).group(1)
                 self.content.append(content)
-        finally: return self.content
+            except: pass
+        return self.content
 
     def getNames(self):
         # Extracts the last name of the person who sent the message
         if len(self.names) != 0: return self.names
         regexp = r'[AM|PM]\s\-\s([^:]*):\s\w'
         for line in self.chat:
-            try: 
+            try:
                 name = re.search(regexp, line.rstrip()).group(1)
                 self.names.append(name)
             except: pass
@@ -79,9 +81,9 @@ class data:
     def runRegex(self, regexp):
         # Runs an custom regex 
         result = []
-        try:
-            for line in self.chat:
+        for line in self.chat:
+            try:
                 resultLine = re.findall(regexp, line.rstrip())
                 result.append(resultLine)
-        finally: return result
-
+            except: pass
+        return result

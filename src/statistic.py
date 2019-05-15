@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from collections import Counter # Local import 
 
 def getMostSaidWords(words):
     # Returns all the most said words 
@@ -16,8 +17,7 @@ def getMessagePerHour(hour):
         elif(streak != 0): occurances.append(streak); streak = int(0)
     
     for i in range(len(occurances)): sum += occurances[i] # Summation of the entire vector 
-    result = (sum / len(occurances))
-    return result
+    return sum / len(occurances)
     
 def getMessagePerDay(dates):
     # returns an value of messages per day
@@ -35,16 +35,30 @@ def getMessagePerDay(dates):
 def getMessagesPerUser(names):
     # Returns the number of times each element in the array appears
     # Obs: Used to get the number of messages each user sended
-    from collections import Counter # Local import 
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
     return Counter(names) 
+
+def getRepeatedElements(arr):
+    # Returns the repeated numbers of an array
+    streak = int(1)
+    for i in range(1, len(arr)):
+        if arr[i] == arr[i-1]:
+            streak+=1
+        else: streak = int(1)
+ 
+def getTotalMessages(names):
+    # Returns the total of messages of the entire chat
+    if len(names) == 0: print("[ERROR] Information 'names' missing"); return
+    return int(len(names))
 
 def getMostSended(names): 
     # Returns the most occured name in a list
     # Obs: Used to get the statistic of the user who most
     # sended messages of the conversaion (The guy who flood everything)
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
-    return max(names,key=names.count)
+    return Counter(names).most_common(1)
+    #print(len(names))
+    #return max(names,key=names.count)
  
 def getAverageWordLength(words):
     # Returns the average of word lenght of
