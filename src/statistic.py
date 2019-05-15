@@ -21,7 +21,7 @@ def getMessagePerHour(hour):
     
 def getMessagePerDay(dates):
     # returns an value of messages per day
-    if len(dates) == 0: print("[ERROR] Information 'dates' missing "); return
+    if len(dates) == 0: print("[ERROR] Information 'dates' missing"); return
     occurances = []
     sum = 0 # Used in the summation of the entire vector  
     streak = int(0)
@@ -35,8 +35,9 @@ def getMessagePerDay(dates):
 def getMessagesPerUser(names):
     # Returns the number of times each element in the array appears
     # Obs: Used to get the number of messages each user sended
-    if len(names) == 0: print("[ERROR] Information 'names' missing"); return 
-    print([[x, names.count(x)] for x in set(names)]) 
+    from collections import Counter # Local import 
+    if len(names) == 0: print("[ERROR] Information 'names' missing"); return
+    return Counter(names) 
 
 def getMostSended(names): 
     # Returns the most occured name in a list
@@ -44,15 +45,13 @@ def getMostSended(names):
     # sended messages of the conversaion (The guy who flood everything)
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
     return max(names,key=names.count)
-
+ 
 def getAverageWordLength(words):
     # Returns the average of word lenght of
     # a word vector
     if len(words) == 0: print("[ERROR] Information 'words' missing"); return
-
     wordLenght = int(0)
     sum = int(0)
-
     for i in range(len(words)): sum += len(words[i]) # Get the sum of all the characters in the vector
     return sum / len(words)
 
@@ -61,4 +60,4 @@ def getAverageReadTime(words, average=200):
     # Now considering the wost average (that being 200wpm)
     # This function just returns the average time
     # of the hole file
-    return len(words) / average # Obviously the time is in minutes 
+    return (len(words) / average) / 60 # Converting the time from minutes to hours 

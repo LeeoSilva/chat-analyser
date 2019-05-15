@@ -12,13 +12,12 @@
 import re # Regular expression library
 
 class data:
-    chat = None 
-    words = []
-    dates = []
-    hours = []
-    names = []
+    chat    = None 
+    words   = []
+    dates   = []
+    hours   = []
+    names   = []
     content = []
-
 
     def __init__(self, textfile):
         # Receives a .txt file as a input 
@@ -50,10 +49,11 @@ class data:
         # Returns an array of times
         if len(self.hours) != 0: return self.hours
         regexp = r'([0-9]{1,2})\:([0-9]{1,2})\s(AM|PM)' 
-        for lines in self.chat:
-            time = re.findall(regexp, lines.rstrip())
-            self.hours.append(time)
-        return self.hours
+        try:
+            for lines in self.chat:
+                time = re.findall(regexp, lines.rstrip())
+                self.hours.append(time)
+        finally: return self.hours
     
     def getMessageContent(self):
         # Returns the content of the message
@@ -68,13 +68,13 @@ class data:
     def getNames(self):
         # Extracts the last name of the person who sent the message
         if len(self.names) != 0: return self.names
-        regexp = r'\-\s([^:]*):\s'
-        try: 
-            for line in self.chat:
+        regexp = r'[AM|PM]\s\-\s([^:]*):\s\w'
+        for line in self.chat:
+            try: 
                 name = re.search(regexp, line.rstrip()).group(1)
                 self.names.append(name)
-        finally: return self.names
-
+            except: pass
+        return self.names
 
     def runRegex(self, regexp):
         # Runs an custom regex 
