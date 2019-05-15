@@ -12,7 +12,7 @@
 import re # Regular expression library
 
 class data:
-    _chat    = None 
+    _chat   = None 
     _words   = []
     _dates   = []
     _hours   = []

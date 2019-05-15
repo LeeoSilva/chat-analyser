@@ -56,9 +56,7 @@ def getMostSended(names):
     # Obs: Used to get the statistic of the user who most
     # sended messages of the conversaion (The guy who flood everything)
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
-    return Counter(names).most_common(1)
-    #print(len(names))
-    #return max(names,key=names.count)
+    return Counter(names)
  
 def getAverageWordLength(words):
     # Returns the average of word lenght of

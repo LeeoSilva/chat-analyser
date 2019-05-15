@@ -22,7 +22,7 @@ if __name__ == "__main__":
     content = chat.getMessageContent()
     words   = chat.getWords()
     #statistic.getRepeatedElements(names)
-    print("Most occured sender: {}".format(statistic.getMostSended(names)))
+    #print("Most occured sender: {}".format(statistic.getMostSended(names)))
     print("Average of messages send per day by both users: {:.2f}".format(statistic.getMessagePerDay(date)))
     print("Average of messages send per hour by both users: {:.2f}".format(statistic.getMessagePerHour(hours)))
     print("Average word length: {:.2f} characters".format(statistic.getAverageWordLength(words)))
@@ -31,4 +31,7 @@ if __name__ == "__main__":
     print("Total of {} messages sent".format(statistic.getTotalMessages(names)))
     messagesPerUser   = statistic.getMessagesPerUser(names) 
     for x in messagesPerUser: print("{} sent {} messages in total".format(x,  messagesPerUser[x]))
-
+    sum = int(0)
+    mostSended = statistic.getMostSended(names)
+    for i in mostSended: sum += int(mostSended[i])
+    print("Total messages sent: {}".format(sum))
