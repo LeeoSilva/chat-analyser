@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from collections import Counter # Local import 
 
 def getMostSaidWords(words):
     # Returns all the most said words 
@@ -35,6 +34,7 @@ def getMessagePerDay(dates):
 def getMessagesPerUser(names):
     # Returns the number of times each element in the array appears
     # Obs: Used to get the number of messages each user sended
+    from collections import Counter # Local import 
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
     return Counter(names) 
 
@@ -51,13 +51,7 @@ def getTotalMessages(names):
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
     return int(len(names))
 
-def getMostSended(names): 
-    # Returns the most occured name in a list
-    # Obs: Used to get the statistic of the user who most
-    # sended messages of the conversaion (The guy who flood everything)
-    if len(names) == 0: print("[ERROR] Information 'names' missing"); return
-    return Counter(names)
- 
+
 def getAverageWordLength(words):
     # Returns the average of word lenght of
     # a word vector

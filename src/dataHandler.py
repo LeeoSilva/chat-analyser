@@ -23,13 +23,12 @@ class data:
         # Receives a .txt file as a input 
         with open(textfile, 'r') as f: self._chat = f.readlines()
 
-
-    def emojiProblem(self, words):
-        # Trying to solve the emoji problem
-        from emoji import UNICODE_EMOJI
-        for auxWords in words:
-            for char in auxWords: 
-                print(char) 
+#    def emojiProblem(self, words):
+#        # Trying to solve the emoji problem
+#        from emoji import UNICODE_EMOJI
+#        for auxWords in words:
+#            for char in auxWords: 
+#                print(char) 
 
     def getWords(self):
         # Appends all the words in a array
