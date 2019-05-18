@@ -51,12 +51,10 @@ def getTotalMessages(names):
     if len(names) == 0: print("[ERROR] Information 'names' missing"); return
     return int(len(names))
 
-
 def getAverageWordLength(words):
     # Returns the average of word lenght of
     # a word vector
     if len(words) == 0: print("[ERROR] Information 'words' missing"); return
-    wordLenght = int(0)
     sum = int(0)
     for i in range(len(words)): sum += len(words[i]) # Get the sum of all the characters in the vector
     return sum / len(words)

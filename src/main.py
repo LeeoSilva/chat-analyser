@@ -32,6 +32,6 @@ if __name__ == "__main__":
     messagesPerUser   = statistic.getMessagesPerUser(names) 
     for x in messagesPerUser: print("{} sent {} messages in total".format(x,  messagesPerUser[x]))
     sum = int(0)
-    mostSended = statistic.getMostSended(names)
+    mostSended = statistic.getMessagesPerUser(names)
     for i in mostSended: sum += int(mostSended[i])
     print("Total messages sent: {}".format(sum))
