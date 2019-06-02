@@ -22,7 +22,7 @@ def getMessagePerDay(dates):
     # returns an value of messages per day
     if len(dates) == 0: print("[ERROR] Information 'dates' missing"); return
     occurances = []
-    sum = 0 # Used in the summation of the entire vector  
+    sumhk = 0 # Used in the summation of the entire vector  
     streak = int(0)
     try:
         for i in range(len(dates)):

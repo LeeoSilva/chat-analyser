@@ -27,7 +27,7 @@ class data:
 #        # Trying to solve the emoji problem
 #        from emoji import UNICODE_EMOJI
 #        for auxWords in words:
-#            for char in auxWords: 
+#           for char in auxWords: 
 #                print(char) 
 
     def getWords(self):
